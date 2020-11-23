@@ -33,6 +33,7 @@ public class Game {
 	private int nbOfUpdate;
 	private int tempo;
 
+
 	/**
 	 * 
 	 * @param graphic
@@ -70,6 +71,7 @@ public class Game {
 		IEnvironment env = new Environment(this);
 		setEnvironment(env);
 		nbOfUpdate=0;
+
 	}
 
 	public void newGameInf() {
@@ -83,6 +85,7 @@ public class Game {
 		IEnvironment env = new EnvInf(this);
 		setEnvironment(env);
 		nbOfUpdate=0;
+
 	}
 	/**
 	 * Lie l'objet frog a la partie
@@ -123,15 +126,16 @@ public class Game {
 
 		if (!this.environment.isSafe(frog.getScrolledPosition())){
 			//graphic.endGameScreen("Perdu !\n " + "Score: " + this.frog.getScrolledPosition().ord);
-			menu.setScore(this.frog.getScrolledPosition().ord, (nbOfUpdate*tempo)/1000);
-			if (State.simpleGame == state) {
-				menu.setScreen(3);
-			} else {
-				menu.setScreen(1);
-			}
-			state = State.endScreen;
-			graphic.showScreen(false);
-			menu.setVisible(true);
+				menu.setScore(this.frog.getScrolledPosition().ord, (nbOfUpdate * tempo) / 1000);
+				if (State.simpleGame == state) {
+					menu.setScreen(3);
+				} else {
+					menu.setScreen(1);
+				}
+				state = State.endScreen;
+				graphic.showScreen(false);
+				menu.setVisible(true);
+
 			return true;
 		}else{
 			return false;

@@ -34,4 +34,5 @@ public interface IFroggerGraphics {
 
     public void showScreen(boolean show );
 
+
 }
