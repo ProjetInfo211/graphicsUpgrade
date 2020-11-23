@@ -122,7 +122,6 @@ public class Game {
 	 * @return true si le partie est perdue
 	 */
 	public boolean testLose() {
-		//////////////////////////////////////////////////
 
 		if (!this.environment.isSafe(frog.getScrolledPosition())){
 			//graphic.endGameScreen("Perdu !\n " + "Score: " + this.frog.getScrolledPosition().ord);
@@ -149,7 +148,6 @@ public class Game {
 	 * @return true si la partie est gagnee
 	 */
 	public boolean testWin() {
-		///////////////////////////////////////////////
 
 		if (this.environment.isWinningPosition(frog.getPosition())){
 			//graphic.endGameScreen("Gagne !");

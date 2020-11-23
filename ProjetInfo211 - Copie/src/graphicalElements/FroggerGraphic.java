@@ -23,13 +23,13 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	private int height;
 	private IFrog frog;
 	private JFrame frame;
-	private final BufferedImage imageFrog = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\frog.png");
-	private final BufferedImage Scarleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Scarleft.png");
-	private final BufferedImage Scarright = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Scarright.png");
-	private final BufferedImage Mcarleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Mcarleft.png");
-	private final BufferedImage Mcarright = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Mcarright.png");
-	private final BufferedImage Busleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Busleft.png");
-	private final BufferedImage Busright = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\Busright.png");
+	private final BufferedImage imageFrog = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/frog.png");
+	private final BufferedImage Scarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarleft.png");
+	private final BufferedImage Scarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarright.png");
+	private final BufferedImage Mcarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarleft.png");
+	private final BufferedImage Mcarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarright.png");
+	private final BufferedImage Busleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busleft.png");
+	private final BufferedImage Busright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busright.png");
 
 
 
@@ -106,6 +106,10 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 						break;
 					  case 3 :
 					  	  g.drawImage(Busleft, e.absc * pixelByCase , invertedOrd, pixelByCase*3, pixelByCase, null);
+					  	break;
+					  case 4 :
+					  	  g.drawImage(Busleft, e.absc * pixelByCase , invertedOrd, pixelByCase*4, pixelByCase, null);
+					  	break;
 					}
 			  	} else if (e.color == Color.BLACK) {
 					size = 1;
@@ -124,6 +128,10 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 						case 3 :
 						g.drawImage(Busright, e.absc * pixelByCase , invertedOrd, pixelByCase*3, pixelByCase, null);
 						break;
+						case 4 :
+						g.drawImage(Busright, e.absc * pixelByCase , invertedOrd, pixelByCase*4, pixelByCase, null);
+						break;
+
 					}
 		      }
 		  }

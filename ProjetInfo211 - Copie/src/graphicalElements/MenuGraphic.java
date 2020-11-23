@@ -1,8 +1,5 @@
 package graphicalElements;
 
-import gameCommons.IFrog;
-import util.Direction;
-import util.State;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,21 +7,19 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class MenuGraphic extends JPanel implements KeyListener {
 
-    private int pixelByCase = 36;
+    private final int pixelByCase = 36;
     private int width;
     private int height;
     private JFrame frame;
-    private final BufferedImage mainMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\main_menu.png");
-    private final BufferedImage loseMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\lose_menu.png");
-    private final BufferedImage winMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\win_menu.png");
-    private final BufferedImage scoresMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\scores_menu.png");
-    private final BufferedImage curseur = readImage("C:\\Users\\UserPC\\IdeaProjects\\ProjetInfo211\\src\\graphicalElements\\Projet pngs\\arrow.png");
+    private final BufferedImage mainMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/main_menu.png");
+    private final BufferedImage loseMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/lose_menu.png");
+    private final BufferedImage winMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/win_menu.png");
+    private final BufferedImage scoresMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/scores_menu.png");
+    private final BufferedImage curseur = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/arrow.png");
     private int choice;
     private boolean enter;
     private int screen;
@@ -106,7 +101,6 @@ public class MenuGraphic extends JPanel implements KeyListener {
             g.drawImage(loseMenu, 0, 0, width*pixelByCase, height*pixelByCase, null);
             g.drawString("Score: " + score , 340, (height*pixelByCase)/2);
             g.drawString(" Time: " + gameTime + "s", 340, ((height*pixelByCase)/2) + 50);
-
         } else if (screen == 2 ) {
             g.drawImage(winMenu, 0, 0, width*pixelByCase, height*pixelByCase, null);
             g.drawString(" Time: " +  gameTime + "s", 340, (height*pixelByCase)/2);
@@ -147,5 +141,10 @@ public class MenuGraphic extends JPanel implements KeyListener {
     public void setScore(int n, float time) {
         this.score = n;
         gameTime=time;
+        {    try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
+            out.println(score +" "+ gameTime);
+            out.close();
+            }catch (IOException e) {e.printStackTrace();}
+        }
     }
 }
