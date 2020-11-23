@@ -29,11 +29,11 @@ public class Lane {
 			this.mayAddCar();
 			for(Case c : this.c) {
 				if (this.leftToRight) {
-					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord))) {
+					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
 						this.mayAddCar(c);
 					}
 				} else {
-					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord))) {
+					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
 						this.mayAddCar(c);
 					}
 				}
@@ -58,11 +58,11 @@ public class Lane {
 			//this.mayAddCar();
 			for(Case c : this.c) {
 				if (this.leftToRight) {
-					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord))) {
+					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
 						this.mayAddCar(c);
 					}
 				} else {
-					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord))) {
+					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
 						this.mayAddCar(c);
 					}
 				}
@@ -89,11 +89,11 @@ public class Lane {
 			}
 			if (!(this.ord ==0  || this.ord == (game.height-1))) {
 				if (this.leftToRight) {
-					if (isSafe(new Case(1, ord))) {
+					if (isSafe(new Case(1, ord)) && isSafe(new Case(2, ord))) {
 						this.mayAddCar();
 					}
 				} else {
-					if (isSafe(new Case(game.width-2, ord))) {
+					if (isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
 						this.mayAddCar();
 					}
 				}
@@ -101,11 +101,11 @@ public class Lane {
 			}
 			this.timer = 0;
 		}
-		for (Car car : this.cars) {
+		/*for (Car car : this.cars) {
 			for (int i = car.getLeftPosition().absc; i < car.getLeftPosition().absc + car.getLength(); i++) {
 				if(i > 0 && i < this.game.width) c[i] = new Case(i, this.ord);
 			}
-		}
+		} */
 		for (Car c : this.cars) {
 			c.addToGraphics();
 		}
@@ -120,7 +120,7 @@ public class Lane {
 		return true;
 	}
 	/*
-	 * Fourni : mayAddCar(), getFirstCase() et getBeforeFirstCase() 
+	 * Fourni : mayAddCar(), getFirstCase() et getBeforeFirstCase()
 	 */
 
 	/**
@@ -138,7 +138,7 @@ public class Lane {
 	private void mayAddCar(Case c){
 		if (this.isSafe(c)){
 			if (this.game.randomGen.nextDouble() < this.density) {
-			this.cars.add(new Car(this.game,c,this.leftToRight));
+				this.cars.add(new Car(this.game,c,this.leftToRight));
 			}
 		}
 	}
