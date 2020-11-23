@@ -25,8 +25,19 @@ public class Lane {
 		this.density = density;
 		this.c = new Case[game.width];
 		this.timer = 0;
-		if (!(this.ord ==0  || this.ord == (game.height-1))) {
+		if (!(this.ord == 0 || this.ord == (game.height - 1))) {
 			this.mayAddCar();
+			for(Case c : this.c) {
+				if (this.leftToRight) {
+					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord))) {
+						this.mayAddCar(c);
+					}
+				} else {
+					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord))) {
+						this.mayAddCar(c);
+					}
+				}
+			}
 		}
 	}
 
@@ -44,9 +55,17 @@ public class Lane {
 		this.timer = 0;
 
 		if (!(this.ord == 0 || this.ord == (game.height - 1))) {
-			this.mayAddCar();
+			//this.mayAddCar();
 			for(Case c : this.c) {
-				this.mayAddCar(c);
+				if (this.leftToRight) {
+					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord))) {
+						this.mayAddCar(c);
+					}
+				} else {
+					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord))) {
+						this.mayAddCar(c);
+					}
+				}
 			}
 		}
 
