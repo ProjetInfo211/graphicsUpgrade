@@ -8,6 +8,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.*;
+
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
 
 public class MenuGraphic extends JPanel implements KeyListener {
 
@@ -144,7 +148,36 @@ public class MenuGraphic extends JPanel implements KeyListener {
         {    try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
             out.println(score +" "+ gameTime);
             out.close();
+            sortScore();
             }catch (IOException e) {e.printStackTrace();}
         }
+    }
+
+    private void sortScore(){
+        try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
+                 //Scanner ini = new Scanner("scores.txt");
+                 java.io.File fichier = new java.io.File("scores.txt");
+                 Scanner in = new java.util.Scanner(fichier);
+
+                 TreeMap<Integer, Float> scores = new TreeMap<>(Collections.reverseOrder());
+                 int key; float value;
+
+                 String[] line;
+
+            while(in.hasNextLine()) {
+                line = in.nextLine().split(" ");
+                key = parseInt(line[0]) ;
+                value =parseFloat(line[1]) ;
+                scores.put(key, value);
+                 }
+
+                  out = new PrintWriter("scores.txt");
+
+                 Set<Integer> keys = scores.keySet();
+                 for(Integer k : keys){
+                out.println(k+" "+scores.get(k));
+            }
+                out.close();
+        }catch (IOException e) {e.printStackTrace();}
     }
 }
