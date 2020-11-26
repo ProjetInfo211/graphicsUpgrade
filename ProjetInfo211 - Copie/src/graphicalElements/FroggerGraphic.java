@@ -23,13 +23,13 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	private int height;
 	private IFrog frog;
 	private JFrame frame;
-	private final BufferedImage imageFrog = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/frog.png");
-	private final BufferedImage Scarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarleft.png");
-	private final BufferedImage Scarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarright.png");
-	private final BufferedImage Mcarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarleft.png");
-	private final BufferedImage Mcarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarright.png");
-	private final BufferedImage Busleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busleft.png");
-	private final BufferedImage Busright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busright.png");
+	private final BufferedImage imageFrog = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\frog.png");
+	private final BufferedImage Scarleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarleft.png");
+	private final BufferedImage Scarright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarright.png");
+	private final BufferedImage Mcarleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarleft.png");
+	private final BufferedImage Mcarright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarright.png");
+	private final BufferedImage Busleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busleft.png");
+	private final BufferedImage Busright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busright.png");
 
 
 
@@ -78,9 +78,9 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 			//g.setColor(e.color);
 
 			//added
-			int size;
-			 int i = 0;
-			 Element e;
+			int size = 0;
+			int i = 0;
+			Element e;
 			 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			while (i < elementsToDisplay.size()){
 				e = elementsToDisplay.get(i);
@@ -107,8 +107,8 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 					  case 3 :
 					  	  g.drawImage(Busleft, e.absc * pixelByCase , invertedOrd, pixelByCase*3, pixelByCase, null);
 					  	break;
-					  case 4 :
-					  	  g.drawImage(Busleft, e.absc * pixelByCase , invertedOrd, pixelByCase*4, pixelByCase, null);
+					  default:
+					  	  g.drawImage(Busleft, e.absc * pixelByCase , invertedOrd, pixelByCase*size, pixelByCase, null);
 					  	break;
 					}
 			  	} else if (e.color == Color.BLACK) {
@@ -117,6 +117,10 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 					while (elementsToDisplay.get(i).color == Color.BLACK && increaseSize(i) ) {
 						size++;
 						i++;
+					}
+					boolean a = (size >= 4);
+					if (a == true){
+					System.out.println("voitures confondues");
 					}
 					switch (size){
 						case 1 :
@@ -128,8 +132,8 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 						case 3 :
 						g.drawImage(Busright, e.absc * pixelByCase , invertedOrd, pixelByCase*3, pixelByCase, null);
 						break;
-						case 4 :
-						g.drawImage(Busright, e.absc * pixelByCase , invertedOrd, pixelByCase*4, pixelByCase, null);
+						default:
+						g.drawImage(Busright, e.absc * pixelByCase , invertedOrd, pixelByCase*size, pixelByCase, null);
 						break;
 
 					}
@@ -139,7 +143,7 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		}
 
 	public boolean increaseSize(int i){
-		return elementsToDisplay.get(i-1).absc == elementsToDisplay.get(i).absc-1 && elementsToDisplay.get(i-1).ord ==elementsToDisplay.get(i).ord;
+		return elementsToDisplay.get(i-1).absc == (elementsToDisplay.get(i).absc)-1 && elementsToDisplay.get(i-1).ord ==elementsToDisplay.get(i).ord;
 	}
 	public void keyTyped(KeyEvent e) {
 	}

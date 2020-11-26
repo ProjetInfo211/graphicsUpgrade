@@ -58,11 +58,11 @@ public class Lane {
 			//this.mayAddCar();
 			for(Case c : this.c) {
 				if (this.leftToRight) {
-					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
+					if (isSafe(new Case(c.absc-1, c.ord)) && isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
 						this.mayAddCar(c);
 					}
 				} else {
-					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
+					if (isSafe(new Case(c.absc-1, c.ord)) && isSafe(new Case(c.absc-2, ord)) && isSafe(new Case(c.absc-3, ord)) && isSafe(new Case(c.absc+1, ord))) {
 						this.mayAddCar(c);
 					}
 				}
@@ -135,12 +135,14 @@ public class Lane {
 		}
 	}
 
-	private void mayAddCar(Case c){
+	private boolean mayAddCar(Case c){
 		if (this.isSafe(c)){
 			if (this.game.randomGen.nextDouble() < this.density) {
 				this.cars.add(new Car(this.game,c,this.leftToRight));
+				return true;
 			}
 		}
+		return false;
 	}
 
 	private Case getFirstCase() {

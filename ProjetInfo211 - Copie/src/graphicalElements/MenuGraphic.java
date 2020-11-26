@@ -19,11 +19,11 @@ public class MenuGraphic extends JPanel implements KeyListener {
     private int width;
     private int height;
     private JFrame frame;
-    private final BufferedImage mainMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/main_menu.png");
-    private final BufferedImage loseMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/lose_menu.png");
-    private final BufferedImage winMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/win_menu.png");
-    private final BufferedImage scoresMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/scores_menu.png");
-    private final BufferedImage curseur = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/arrow.png");
+    private final BufferedImage mainMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\main_menu.png");
+    private final BufferedImage loseMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\lose_menu.png");
+    private final BufferedImage winMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\win_menu.png");
+    private final BufferedImage scoresMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\scores_menu.png");
+    private final BufferedImage curseur = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\arrow.png");
     private int choice;
     private boolean enter;
     private int screen;

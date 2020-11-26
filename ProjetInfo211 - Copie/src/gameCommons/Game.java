@@ -54,7 +54,6 @@ public class Game {
 		this.height = height;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
-		this.nbOfScroll = 0;
 		this.state=State.mainMenu;
 		this.tempo=tempo;
 
@@ -71,6 +70,7 @@ public class Game {
 		IEnvironment env = new Environment(this);
 		setEnvironment(env);
 		nbOfUpdate=0;
+		this.nbOfScroll = 0;
 
 	}
 
@@ -85,6 +85,7 @@ public class Game {
 		IEnvironment env = new EnvInf(this);
 		setEnvironment(env);
 		nbOfUpdate=0;
+		this.nbOfScroll = 0;
 
 	}
 	/**

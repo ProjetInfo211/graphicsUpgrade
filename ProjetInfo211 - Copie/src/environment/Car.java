@@ -55,6 +55,6 @@ public class Car {
 	}
 
 	public boolean onCase (Case c){
-			return c.ord == this.leftPosition.ord && c.absc >= this.leftPosition.absc && c.absc < this.leftPosition.absc + this.length;
+			return (c.ord == this.leftPosition.ord) && (c.absc >= this.leftPosition.absc && c.absc < (this.leftPosition.absc + this.length));
 	}
 }
