@@ -94,11 +94,11 @@ public class MenuGraphic extends JPanel implements KeyListener {
         if (screen == 0) {
             g.drawImage(mainMenu, 0, 0, width * pixelByCase, height * pixelByCase, null);
             if (choice==0) {
-                g.drawImage(curseur, 215, 265, pixelByCase, pixelByCase, null);
+                g.drawImage(curseur, pixelByCase*6, pixelByCase*7+13, pixelByCase, pixelByCase, null);
             } else if (choice==1) {
-                g.drawImage(curseur, 215, 380, pixelByCase, pixelByCase, null);
+                g.drawImage(curseur, pixelByCase*6, pixelByCase*10+20, pixelByCase, pixelByCase, null);
             } else if (choice==2) {
-                g.drawImage(curseur, 215, 500, pixelByCase, pixelByCase, null);
+                g.drawImage(curseur, pixelByCase*6, pixelByCase*13+32, pixelByCase, pixelByCase, null);
             }
 
         } else if (screen == 1 ) {
@@ -113,6 +113,25 @@ public class MenuGraphic extends JPanel implements KeyListener {
             g.drawString(" Time: " +  gameTime + "s", 340, (height*pixelByCase)/2);
         } else {
             g.drawImage(scoresMenu, 0, 0, width*pixelByCase, height*pixelByCase, null);
+            java.io.File fichier = new java.io.File("scores.txt");
+            try {
+                Scanner in = new Scanner(fichier);
+                String [] line;
+                JLabel text;
+                int i = 0;
+                while(in.hasNextLine() && i <5) {
+                    i++;
+                    line = in.nextLine().split("\n");
+                    g.setFont(new Font("Serif", Font.BOLD, pixelByCase));
+                    g.drawString(line[0],width*pixelByCase/3, height*pixelByCase/3+i*pixelByCase);
+                }
+
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }
@@ -155,7 +174,6 @@ public class MenuGraphic extends JPanel implements KeyListener {
 
     private void sortScore(){
         try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
-                 //Scanner ini = new Scanner("scores.txt");
                  java.io.File fichier = new java.io.File("scores.txt");
                  Scanner in = new java.util.Scanner(fichier);
 
