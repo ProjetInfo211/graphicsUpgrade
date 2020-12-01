@@ -9,9 +9,9 @@ import util.Direction;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.ImageObserver; ////////////////
-import java.awt.image.BufferedImage;////////////////
-import javax.imageio.ImageIO;//////////////////////
+import java.awt.image.ImageObserver;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,26 +24,48 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	private IFrog frog;
 	private JFrame frame;
 
-	private final BufferedImage imageFrog = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\frog.png");
-	private final BufferedImage Scarleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarleft.png");
-	private final BufferedImage Scarright = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarright.png");
-	private final BufferedImage Mcarleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarleft.png");
-	private final BufferedImage Mcarright = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarright.png");
-	private final BufferedImage Busleft = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busleft.png");
-	private final BufferedImage Busright = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busright.png");
+	private BufferedImage imageFrog;
+	private BufferedImage Scarleft;
+	private BufferedImage Scarright;
+	private BufferedImage Mcarleft;
+	private BufferedImage Mcarright;
+	private BufferedImage Busleft;
+	private BufferedImage Busright;
+	private void chargeFiles() {
 
+	try {
+		File frogPng = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/frog.png");
+		this.imageFrog = readImage(frogPng.getAbsolutePath());
 
+		File scarleft = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarleft.png");
+		this.Scarleft = readImage(scarleft.getAbsolutePath());
 
+		File scarright = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarright.png");
+		this.Scarright = readImage(scarright.getAbsolutePath());
 
+		File mcarleft = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarleft.png");
+		this.Mcarleft = readImage(mcarleft.getAbsolutePath());
 
+		File mcarright = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarright.png");
+		this.Mcarright = readImage(mcarright.getAbsolutePath());
 
+		File busleft = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busleft.png");
+		this.Busleft = readImage(busleft.getAbsolutePath());
 
+		File busright = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busright.png");
+		this.Busright = readImage(busright.getAbsolutePath());
 
+	} catch(Exception e){
+		System.err.println(e.getMessage());
+	}
+
+}
 
 	public FroggerGraphic(int width, int height) {
 		this.width = width;
 		this.height = height;
 		elementsToDisplay = new ArrayList<Element>();
+		this.chargeFiles();
 
 		setBackground(Color.GRAY);
 		setPreferredSize(new Dimension(width * pixelByCase, height * pixelByCase));
@@ -57,7 +79,7 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		frame.addKeyListener(this);
 
 	}
-///////////////////////////////////////////////////////////////////////////////////////////
+
 	public static BufferedImage readImage(String filename) {
 
 		try {
@@ -70,8 +92,6 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		return null;
 
 	}
-////////////////////////////////////////////////////////////////////////////////////////
-
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

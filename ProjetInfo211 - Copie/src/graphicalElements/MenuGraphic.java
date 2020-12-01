@@ -20,11 +20,37 @@ public class MenuGraphic extends JPanel implements KeyListener{
     private int width;
     private int height;
     private JFrame frame;
-    private final BufferedImage mainMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\main_menu.png");
-    private final BufferedImage loseMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\lose_menu.png");
-    private final BufferedImage winMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\win_menu.png");
-    private final BufferedImage scoresMenu = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\scores_menu.png");
-    private final BufferedImage curseur = readImage("C:\\Users\\UserPC\\IdeaProjects\\test frogger\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\arrow.png");
+
+    private BufferedImage mainMenu;
+    private BufferedImage loseMenu;
+    private BufferedImage winMenu;
+    private BufferedImage scoresMenu;
+    private BufferedImage curseur;
+
+    private void chargeFiles() {
+
+        try {
+            File mainmenu = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/main_menu.png");
+            this.mainMenu = readImage(mainmenu.getAbsolutePath());
+
+            File losemenu = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/lose_menu.png");
+            this.loseMenu = readImage(losemenu.getAbsolutePath());
+
+            File winmenu = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/win_menu.png");
+            this.winMenu = readImage(winmenu.getAbsolutePath());
+
+            File scoresmenu = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/scores_menu.png");
+            this.scoresMenu = readImage(scoresmenu.getAbsolutePath());
+
+            File Curseur = new File("ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/arrow.png");
+            this.curseur = readImage(Curseur.getAbsolutePath());
+
+        } catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+
+    }
+
     private int choice;
     private boolean enter;
     private int screen;
@@ -37,6 +63,7 @@ public class MenuGraphic extends JPanel implements KeyListener{
         this.choice = 0;
         this.enter = false;
         this.screen = 0;
+        this.chargeFiles();
 
         setBackground(Color.GRAY);
         setPreferredSize(new Dimension(width * pixelByCase, height * pixelByCase));
