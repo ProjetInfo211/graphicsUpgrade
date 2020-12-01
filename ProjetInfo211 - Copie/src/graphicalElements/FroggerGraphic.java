@@ -18,18 +18,19 @@ import java.util.ArrayList;
 
 public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListener {
 	private ArrayList<Element> elementsToDisplay;
-	private int pixelByCase = 36;
+	public static int pixelByCase = 36;
 	private int width;
 	private int height;
 	private IFrog frog;
 	private JFrame frame;
-	private final BufferedImage imageFrog = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\frog.png");
-	private final BufferedImage Scarleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarleft.png");
-	private final BufferedImage Scarright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Scarright.png");
-	private final BufferedImage Mcarleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarleft.png");
-	private final BufferedImage Mcarright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Mcarright.png");
-	private final BufferedImage Busleft = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busleft.png");
-	private final BufferedImage Busright = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\Busright.png");
+
+	private final BufferedImage imageFrog = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/frog.png");
+	private final BufferedImage Scarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarleft.png");
+	private final BufferedImage Scarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Scarright.png");
+	private final BufferedImage Mcarleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarleft.png");
+	private final BufferedImage Mcarright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Mcarright.png");
+	private final BufferedImage Busleft = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busleft.png");
+	private final BufferedImage Busright = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/Busright.png");
 
 
 

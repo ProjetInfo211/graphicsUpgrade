@@ -9,21 +9,22 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
+import graphicalElements.FroggerGraphic;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 
-public class MenuGraphic extends JPanel implements KeyListener {
+public class MenuGraphic extends JPanel implements KeyListener{
 
-    private final int pixelByCase = 36;
+    private final int pixelByCase =FroggerGraphic.pixelByCase;
     private int width;
     private int height;
     private JFrame frame;
-    private final BufferedImage mainMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\main_menu.png");
-    private final BufferedImage loseMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\lose_menu.png");
-    private final BufferedImage winMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\win_menu.png");
-    private final BufferedImage scoresMenu = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\scores_menu.png");
-    private final BufferedImage curseur = readImage("C:\\Users\\UserPC\\test clone\\graphicsUpgrade\\ProjetInfo211 - Copie\\src\\graphicalElements\\Projet pngs\\arrow.png");
+    private final BufferedImage mainMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/main_menu.png");
+    private final BufferedImage loseMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/lose_menu.png");
+    private final BufferedImage winMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/win_menu.png");
+    private final BufferedImage scoresMenu = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/scores_menu.png");
+    private final BufferedImage curseur = readImage("/home/gabuz/ProjetInfo211Graphic(online)/graphicsUpgrade/ProjetInfo211 - Copie/src/graphicalElements/Projet pngs/arrow.png");
     private int choice;
     private boolean enter;
     private int screen;
@@ -109,6 +110,7 @@ public class MenuGraphic extends JPanel implements KeyListener {
             g.drawImage(winMenu, 0, 0, width*pixelByCase, height*pixelByCase, null);
             g.drawString(" Time: " +  gameTime + "s", 340, (height*pixelByCase)/2);
         } else if (screen == 3) {
+            
             g.drawImage(loseMenu, 0, 0, width*pixelByCase, height*pixelByCase, null);
             g.drawString(" Time: " +  gameTime + "s", 340, (height*pixelByCase)/2);
         } else {
@@ -161,11 +163,13 @@ public class MenuGraphic extends JPanel implements KeyListener {
         this.enter=false;
     }
 
+    private String space = "       ";
+
     public void setScore(int n, float time) {
         this.score = n;
         gameTime=time;
         {    try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
-            out.println(score +" "+ gameTime);
+            out.println(score +space+ gameTime);
             out.close();
             sortScore();
             }catch (IOException e) {e.printStackTrace();}
@@ -176,6 +180,7 @@ public class MenuGraphic extends JPanel implements KeyListener {
         try {    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
                  java.io.File fichier = new java.io.File("scores.txt");
                  Scanner in = new java.util.Scanner(fichier);
+                 in.nextLine();
 
                  TreeMap<Integer, Float> scores = new TreeMap<>(Collections.reverseOrder());
                  int key; float value;
@@ -183,17 +188,21 @@ public class MenuGraphic extends JPanel implements KeyListener {
                  String[] line;
 
             while(in.hasNextLine()) {
-                line = in.nextLine().split(" ");
+                line = in.nextLine().split(space);
                 key = parseInt(line[0]) ;
                 value =parseFloat(line[1]) ;
                 scores.put(key, value);
                  }
 
                   out = new PrintWriter("scores.txt");
+                  out.println("Line    "+"time");
 
                  Set<Integer> keys = scores.keySet();
+                 int i = 0;
                  for(Integer k : keys){
-                out.println(k+" "+scores.get(k));
+                     if (i>4) break;
+                     out.println(k+space+scores.get(k));
+                     i++;
             }
                 out.close();
         }catch (IOException e) {e.printStackTrace();}
