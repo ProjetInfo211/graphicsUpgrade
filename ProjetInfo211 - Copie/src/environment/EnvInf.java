@@ -17,7 +17,10 @@ public class EnvInf extends Environment implements IEnvironment {
     public void update(){
         scrolling();
         for (Lane lane : grid){
-            lane.update();
+           if (lane.isVisible()) {
+                lane.update();
+           }
+
         }
     }
 

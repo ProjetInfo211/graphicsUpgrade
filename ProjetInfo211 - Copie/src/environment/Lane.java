@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import util.Case;
 import gameCommons.Game;
+import util.State;
 
 public class Lane {
 	private Game game;
@@ -25,16 +26,33 @@ public class Lane {
 		this.density = density;
 		this.c = new Case[game.width];
 		this.timer = 0;
-		if (!(this.ord == 0 || this.ord == (game.height - 1))) {
-			this.mayAddCar();
-			for(Case c : this.c) {
-				if (this.leftToRight) {
-					if (isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
-						this.mayAddCar(c);
+		if (game.state == State.simpleGame) {
+			if (!(this.ord == 0 || this.ord == (game.height - 1))) {
+				this.mayAddCar();
+				for (Case c : this.c) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(c.absc + 1, c.ord)) && isSafe(new Case(c.absc + 2, c.ord)) && isSafe(new Case(c.absc + 3, c.ord))) {
+							this.mayAddCar(c);
+						}
+					} else {
+						if (isSafe(new Case(c.absc - 1, ord)) && isSafe(new Case(c.absc - 2, ord)) && isSafe(new Case(c.absc - 3, ord))) {
+							this.mayAddCar(c);
+						}
 					}
-				} else {
-					if (isSafe(new Case(game.width-1, ord)) && isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
-						this.mayAddCar(c);
+				}
+			}
+		} else {
+			if (!(this.ord == 0 )) {
+				this.mayAddCar();
+				for (Case c : this.c) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(c.absc + 1, c.ord)) && isSafe(new Case(c.absc + 2, c.ord)) && isSafe(new Case(c.absc + 3, c.ord))) {
+							this.mayAddCar(c);
+						}
+					} else {
+						if (isSafe(new Case(c.absc - 1, ord)) && isSafe(new Case(c.absc - 2, ord)) && isSafe(new Case(c.absc - 3, ord))) {
+							this.mayAddCar(c);
+						}
 					}
 				}
 			}
@@ -53,17 +71,33 @@ public class Lane {
 			c[i] = new Case(i,this.ord);
 		}
 		this.timer = 0;
-
-		if (!(this.ord == 0 || this.ord == (game.height - 1))) {
-			//this.mayAddCar();
-			for(Case c : this.c) {
-				if (this.leftToRight) {
-					if (isSafe(new Case(c.absc-1, c.ord)) && isSafe(new Case(c.absc+1, c.ord)) && isSafe(new Case(c.absc+2, c.ord)) && isSafe(new Case(c.absc+3, c.ord))) {
-						this.mayAddCar(c);
+		if (game.state == State.simpleGame) {
+			if (!(this.ord == 0 || this.ord == (game.height - 1))) {
+				//this.mayAddCar();
+				for (Case c : this.c) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(c.absc - 1, c.ord)) && isSafe(new Case(c.absc + 1, c.ord)) && isSafe(new Case(c.absc + 2, c.ord)) && isSafe(new Case(c.absc + 3, c.ord))) {
+							this.mayAddCar(c);
+						}
+					} else {
+						if (isSafe(new Case(c.absc - 1, c.ord)) && isSafe(new Case(c.absc - 2, ord)) && isSafe(new Case(c.absc - 3, ord)) && isSafe(new Case(c.absc + 1, ord))) {
+							this.mayAddCar(c);
+						}
 					}
-				} else {
-					if (isSafe(new Case(c.absc-1, c.ord)) && isSafe(new Case(c.absc-2, ord)) && isSafe(new Case(c.absc-3, ord)) && isSafe(new Case(c.absc+1, ord))) {
-						this.mayAddCar(c);
+				}
+			}
+		} else {
+			if (!(this.ord == 0 )) {
+				//this.mayAddCar();
+				for (Case c : this.c) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(c.absc - 1, c.ord)) && isSafe(new Case(c.absc + 1, c.ord)) && isSafe(new Case(c.absc + 2, c.ord)) && isSafe(new Case(c.absc + 3, c.ord))) {
+							this.mayAddCar(c);
+						}
+					} else {
+						if (isSafe(new Case(c.absc - 1, c.ord)) && isSafe(new Case(c.absc - 2, ord)) && isSafe(new Case(c.absc - 3, ord)) && isSafe(new Case(c.absc + 1, ord))) {
+							this.mayAddCar(c);
+						}
 					}
 				}
 			}
@@ -87,17 +121,30 @@ public class Lane {
 			for (Car c : this.cars) {
 				c.walk();
 			}
-			if (!(this.ord ==0  || this.ord == (game.height-1))) {
-				if (this.leftToRight) {
-					if (isSafe(new Case(1, ord)) && isSafe(new Case(2, ord))) {
-						this.mayAddCar();
-					}
-				} else {
-					if (isSafe(new Case(game.width-2, ord)) && isSafe(new Case(game.width-3, ord))) {
-						this.mayAddCar();
+			if (game.state == State.simpleGame) {
+				if (!(this.ord == 0 || this.ord == (game.height - 1))) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(1, ord)) && isSafe(new Case(2, ord))) {
+							this.mayAddCar();
+						}
+					} else {
+						if (isSafe(new Case(game.width - 2, ord)) && isSafe(new Case(game.width - 3, ord))) {
+							this.mayAddCar();
+						}
 					}
 				}
-
+			} else {
+				if (!(this.ord == 0)) {
+					if (this.leftToRight) {
+						if (isSafe(new Case(1, ord)) && isSafe(new Case(2, ord))) {
+							this.mayAddCar();
+						}
+					} else {
+						if (isSafe(new Case(game.width - 2, ord)) && isSafe(new Case(game.width - 3, ord))) {
+							this.mayAddCar();
+						}
+					}
+				}
 			}
 			this.timer = 0;
 		}
@@ -106,8 +153,10 @@ public class Lane {
 				if(i > 0 && i < this.game.width) c[i] = new Case(i, this.ord);
 			}
 		} */
-		for (Car c : this.cars) {
-			c.addToGraphics();
+		if (isVisible()) {
+			for (Car c : this.cars) {
+				c.addToGraphics();
+			}
 		}
 	}
 
@@ -119,6 +168,15 @@ public class Lane {
 		}
 		return true;
 	}
+
+	public int getOrd() {
+		return ord;
+	}
+
+	public boolean isVisible() {
+		return (this.ord >= game.nbOfScroll && this.ord < game.height + game.nbOfScroll);
+	}
+
 	/*
 	 * Fourni : mayAddCar(), getFirstCase() et getBeforeFirstCase()
 	 */

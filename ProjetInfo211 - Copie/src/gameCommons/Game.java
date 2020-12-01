@@ -29,7 +29,7 @@ public class Game {
 	private MenuGraphic menu;
 
 	public int nbOfScroll;
-	private State state;
+	public State state;
 	private int nbOfUpdate;
 	private int tempo;
 
@@ -126,19 +126,20 @@ public class Game {
 
 		if (!this.environment.isSafe(frog.getScrolledPosition())){
 			//graphic.endGameScreen("Perdu !\n " + "Score: " + this.frog.getScrolledPosition().ord);
-			if(this.environment.getClass() == EnvInf.class)
+
+			if (State.simpleGame == state) {
+				menu.setTime((nbOfUpdate * tempo) / 1000);
+				menu.setScreen(3);
+			} else {
 				menu.setScore(this.frog.getScrolledPosition().ord, (nbOfUpdate * tempo) / 1000);
-				if (State.simpleGame == state) {
-					menu.setScreen(3);
-				} else {
-					menu.setScreen(1);
-				}
-				state = State.endScreen;
-				graphic.showScreen(false);
-				menu.setVisible(true);
+				menu.setScreen(1);
+			}
+			state = State.endScreen;
+			graphic.showScreen(false);
+			menu.setVisible(true);
 
 			return true;
-		}else{
+		} else{
 			return false;
 		}
 	}
@@ -153,6 +154,7 @@ public class Game {
 
 		if (this.environment.isWinningPosition(frog.getPosition())){
 			//graphic.endGameScreen("Gagne !");
+			menu.setTime((nbOfUpdate * tempo) / 1000);
 			menu.setScreen(2);
 			state= State.endScreen;
 			graphic.showScreen(false);

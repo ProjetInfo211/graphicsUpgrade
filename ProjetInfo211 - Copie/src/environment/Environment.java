@@ -3,6 +3,7 @@ package environment;
 import util.Case;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
+import util.State;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,9 @@ public class Environment implements IEnvironment {
         for(int i=0; i<game.height; i++) {
             this.grid.add(i, new Lane(game, i));
         }
-        this.grid.add(new environment.Lane(game, game.height - 1));
+        if (game.state == State.simpleGame) {
+            this.grid.add(new environment.Lane(game, game.height - 1));
+        }
     }
 
     public boolean isSafe(Case c){
