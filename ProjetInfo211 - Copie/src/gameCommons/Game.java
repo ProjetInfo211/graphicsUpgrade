@@ -126,6 +126,7 @@ public class Game {
 
 		if (!this.environment.isSafe(frog.getScrolledPosition())){
 			//graphic.endGameScreen("Perdu !\n " + "Score: " + this.frog.getScrolledPosition().ord);
+			if(this.environment.getClass() == EnvInf.class)
 				menu.setScore(this.frog.getScrolledPosition().ord, (nbOfUpdate * tempo) / 1000);
 				if (State.simpleGame == state) {
 					menu.setScreen(3);
