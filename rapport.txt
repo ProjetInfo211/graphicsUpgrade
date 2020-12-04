@@ -16,3 +16,11 @@
         Dans un autre temps, nous avons voulu optimiser le jeu en limitant l'update des Lanes aux seules Lanes visibles.
     En effet, on s'est rendu compte qu'en montant dans les Lanes en mode Infinite l'affichage des lanes se faisait plus
     lent donnant un résultat visuel saccadé.
+        Nous avons alors rendu les différents éléments graphiques dépendant du nombre de pixels par case afin d'avoir
+    la possibilité de modifier la taille d'affichage en ne modifiant que la variable pixelsByCase de FroggerGraphics.
+        Après ça nous avons peaufiné le jeu en y ajoutant quelques choix personnels : la Frog n'avance plus quand une
+    touche est appuyée mais quand elle est relâchée ce qui permet de limiter la vitesse de la Frog à la rapidité de
+    frappe du joueur; le timer ne se lance que lorsque la ligne de départ est franchie afin de ne pas pénaliser un
+    joueur qui souhaite attendre avant de commencer sa partie.
+        Nous avons enfin cherché à généraliser le chemin d'accès aux différentes images à charger pour que tout
+    utilisateur puisse lancer notre version du jeu sans avoir besoin de modifier ce chemin dans les lignes de code.
