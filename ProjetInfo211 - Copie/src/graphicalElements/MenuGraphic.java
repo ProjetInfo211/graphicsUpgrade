@@ -13,6 +13,7 @@ import graphicalElements.FroggerGraphic;
 
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
+import static javax.imageio.ImageIO.read;
 
 public class MenuGraphic extends JPanel implements KeyListener{
 
@@ -80,10 +81,9 @@ public class MenuGraphic extends JPanel implements KeyListener{
 
     private BufferedImage readImage(String filename) {
         try {
-            return ImageIO.read(new File(filename));
+            return read(new File(filename));
         } catch (IOException e) {
             System.out.println("Erreur lors du chargement de " + filename);
-            System.exit(1);
         }
 
         return null;
