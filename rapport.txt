@@ -1,0 +1,18 @@
+    Les parties obligatoires ont été réalisées sans grosse difficulté apparentes.
+    Ensuite, nous avons décidé d'améliorer l'affichage graphique en améliorant le design des Cars affichées, en ajoutant
+    un menu permettant de choisir le mode de jeu ou de consulter les meilleurs scores .
+        Pour cela nous avons dû nous documenter sur plusieures bibliothèques non vues en cours. Tout d'abord pour le
+    chargement des png des différentes cars nous avons eu besoin de consulter la documentation de BufferedImage et nous
+    avons revu le tp 2.
+        Ensuite, nous nous sommes rendu compte d'un problème non visible avant ces améliorations : des cars se retrouvaient
+    superposées. Après avoir revu les conditions de "MayAddCar", les updates des Lanes, après avoir lancer le débugger
+    plusieures fois, nous avons localisé la source du bug dans les conditions de MayAddCar(c).
+        Suite à ça, nous avons cherché un moyen de sauvegarder les meilleurs scores entre deux build du projet.
+    Nous avons donc choisi de créer un fichier  txt dans lequel, à chaque fin de partie, le score est sauvegardé.
+    Il fallait ensuite réussir à trier les scores. Pour y parvenir, nous avons d'abord choisi de stocker temporairement
+    les scores dans un Hashmap puis de chercher à trier le HashMap. Or nous n'avons pas trouver comment le faire.
+    Mais après quelques recherches nous sommes tombé sur la documentation des Treemap qui sont des HashMap
+    classées par ordre des Keys.
+        Dans un autre temps, nous avons voulu optimiser le jeu en limitant l'update des Lanes aux seules Lanes visibles.
+    En effet, on s'est rendu compte qu'en montant dans les Lanes en mode Infinite l'affichage des lanes se faisait plus
+    lent donnant un résultat visuel saccadé.
