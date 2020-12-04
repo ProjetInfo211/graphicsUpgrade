@@ -1,26 +1,12 @@
-    Les parties obligatoires ont été réalisées sans grosse difficulté apparentes.
-    Ensuite, nous avons décidé d'améliorer l'affichage graphique en améliorant le design des Cars affichées, en ajoutant
-    un menu permettant de choisir le mode de jeu ou de consulter les meilleurs scores .
-        Pour cela nous avons dû nous documenter sur plusieures bibliothèques non vues en cours. Tout d'abord pour le
-    chargement des png des différentes cars nous avons eu besoin de consulter la documentation de BufferedImage et nous
-    avons revu le tp 2.
-        Ensuite, nous nous sommes rendu compte d'un problème non visible avant ces améliorations : des cars se retrouvaient
-    superposées. Après avoir revu les conditions de "MayAddCar", les updates des Lanes, après avoir lancer le débugger
-    plusieures fois, nous avons localisé la source du bug dans les conditions de MayAddCar(c).
-        Suite à ça, nous avons cherché un moyen de sauvegarder les meilleurs scores entre deux build du projet.
-    Nous avons donc choisi de créer un fichier  txt dans lequel, à chaque fin de partie, le score est sauvegardé.
-    Il fallait ensuite réussir à trier les scores. Pour y parvenir, nous avons d'abord choisi de stocker temporairement
-    les scores dans un Hashmap puis de chercher à trier le HashMap. Or nous n'avons pas trouver comment le faire.
-    Mais après quelques recherches nous sommes tombé sur la documentation des Treemap qui sont des HashMap
-    classées par ordre des Keys.
-        Dans un autre temps, nous avons voulu optimiser le jeu en limitant l'update des Lanes aux seules Lanes visibles.
-    En effet, on s'est rendu compte qu'en montant dans les Lanes en mode Infinite l'affichage des lanes se faisait plus
-    lent donnant un résultat visuel saccadé.
-        Nous avons alors rendu les différents éléments graphiques dépendant du nombre de pixels par case afin d'avoir
-    la possibilité de modifier la taille d'affichage en ne modifiant que la variable pixelsByCase de FroggerGraphics.
-        Après ça nous avons peaufiné le jeu en y ajoutant quelques choix personnels : la Frog n'avance plus quand une
-    touche est appuyée mais quand elle est relâchée ce qui permet de limiter la vitesse de la Frog à la rapidité de
-    frappe du joueur; le timer ne se lance que lorsque la ligne de départ est franchie afin de ne pas pénaliser un
-    joueur qui souhaite attendre avant de commencer sa partie.
-        Nous avons enfin cherché à généraliser le chemin d'accès aux différentes images à charger pour que tout
-    utilisateur puisse lancer notre version du jeu sans avoir besoin de modifier ce chemin dans les lignes de code.
+Les parties obligatoires ont été réalisées sans grande difficulté apparente. 
+Pour la partie 4, nous avons choisi de traiter le sujet Timer. Celui-ci se lance lorsque la ligne de départ est franchie, afin de ne pas pénaliser un joueur qui souhaite attendre avant de commencer sa partie. Son temps de jeu est affiché à la fin de chaque partie. 
+Pour la partie 5, nous avons décidé d'améliorer l'affichage graphique en améliorant le design des Cars et de la frog affichées.
+Pour cela nous avons dû nous documenter sur plusieurs bibliothèques non vues en cours. Tout d'abord pour le chargement des .png des différentes cars nous avons eu besoin de consulter la documentation de BufferedImage et nous avons revu le TP2.
+Ensuite, nous nous sommes rendu compte d'un problème non visible avant ces améliorations : des cars se retrouvaient superposées. Après avoir revu les conditions de MayAddCar(), les updates des Lanes, et après avoir lancé le débugger plusieurs fois, nous avons localisé la source du problème dans les conditions de MayAddCar(c) et dans l’interprétation de elementsToDisplay. 
+Dans un autre temps,  nous nous sommes rendu compte qu'en montant dans les Lanes en mode Infinite l'affichage des Lanes se faisait de plus en plus lent, donnant un résultat visuel saccadé. De ce fait, nous avons optimisé l'affichage graphique du jeu en limitant l'update des Lanes aux seules Lanes visibles.
+Nous avons par ailleurs rendu les différents éléments graphiques dépendant du nombre de pixels par case afin d'avoir la possibilité de modifier la taille d'affichage en ne modifiant que la variable pixelsByCase de FroggerGraphics. Ensuite, il nous a fallu généraliser le chemin d'accès aux différentes images à charger pour que tout utilisateur puisse lancer notre version du jeu sans avoir besoin de modifier ce chemin dans les lignes de code.
+Quelques choix personnels ont été réalisés. L’apparition de nouvelles Lanes se fait dès que l’utilisateur arrive à une hauteur de (game.height/2) et la Frog n'avance plus quand une touche est appuyée mais lorsqu’elle est relâchée, ce qui permet de limiter la vitesse de la Frog à la rapidité de frappe du joueur. 
+Enfin, nous avons choisi d'ajouter quelques améliorations. Nous avons mis en place un système de menu et sous-menu nous permettant de naviguer entre les différents modes de jeux et de redémarrer une nouvelle partie sans avoir à fermer la fenêtre et exécuter à nouveau le programme. Pour ce faire, nous avons créé une classe MenuGraphic qui nous permet de naviguer entre les différentes fenêtres en fonction de l'attribut "etat" de la classe Game, défini par une structure.
+Par la suite, nous avons cherché un moyen de sauvegarder les meilleurs scores entre deux build du projet pour pouvoir les consulter depuis le menu principal.
+Nous avons donc choisi de créer un fichier  txt dans lequel, à chaque fin de partie, le score est sauvegardé.
+Il fallait ensuite réussir à trier les scores. Pour y parvenir, nous avons d'abord choisi de stocker temporairement les scores dans un Hashmap puis de chercher à trier le HashMap. Or nous n'avons pas trouvé comment le faire. Mais après quelques recherches nous sommes tombé sur la documentation des Treemap qui sont des HashMap classées par ordre des Keys. 
